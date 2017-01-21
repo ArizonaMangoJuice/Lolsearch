@@ -77,11 +77,16 @@ body {
     height: 200px;
     position: relative;
     border: 1px solid #ca9a43;
+    display: inline-block;
+    background: #fff;
     padding: 0;
     width: 70%;
-    margin-left: auto;
-    margin-right: auto;
+    float: right;
     margin-bottom: 25px;
+}
+
+.container-to-hold:last-child {
+    clear: both;
 }
 
 .name-of-game {
@@ -152,4 +157,19 @@ img {
     top: 16px;
     height: 100px;
     width: 100px;
+}
+
+.ranked-stats {
+    border: 1px solid #ca9a43;
+    color: #ca9a43;
+    text-decoration: underline;
+    float: left;
+    text-align: center;
+    width: 300px;
+    background: #fff;
+    border-radius: 5px;
+}
+
+#white {
+    color: #000;
 }

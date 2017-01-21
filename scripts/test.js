@@ -10,16 +10,42 @@ $(document).ready(function() {
             dataType: "json",
             success: function(json) {
                 console.log(test);
-                test = test.replace(/\s/g, '');
-                info = json[test].id;
+                info = json[test.replace(/\s/gi, '')].id;
                 $(".info").html(info);
             },
             error: function() {
                 alert("please enter a real name");
             }
         });
-        var url2 = "https://na.api.pvp.net/api/lol/na/v1.3/game/by-summoner/" + info + "/recent?api_key=" + API;
+        var tierName = "https://na.api.pvp.net/api/lol/na/v2.5/league/by-summoner/" + info + "/entry?api_key=" + API;
 
+        var url2 = "https://na.api.pvp.net/api/lol/na/v1.3/game/by-summoner/" + info + "/recent?api_key=" + API;
+        $.ajax({
+            type: "GET",
+            url: tierName,
+            async: false,
+            dataType: "json",
+            success: function(json) {
+
+                rankedName = json[info][0].name;
+                rankedTier = json[info][0].tier;
+                rankedQueue = json[info][0].queue;
+                rankedDivision = json[info][0].entries[0].division;
+                rankedPoints = json[info][0].entries[0].leaguePoints;
+                rankedWins = json[info][0].entries[0].wins;
+                rankedLosses = json[info][0].entries[0].losses;
+                rankedStreak = json[info][0].entries[0].isHotStreak;
+                rankedVeteran = json[info][0].entries[0].isVeteran;
+                rankedFreshBlood = json[info][0].entries[0].isFreshBlood;
+
+                $(".ranking-pic").prepend("<div class='ranked-stats'><p>" + rankedName + "</p><p>" + rankedQueue + "</p><p>" + rankedTier + " " + rankedDivision + "</p><p>" + rankedPoints + " LP" + "<p>" + rankedWins + " Wins " + rankedLosses + " Losses" + "</div>");
+
+                console.log(typeof summonerID);
+            },
+            error: function() {
+                alert("tier is wrong get er done");
+            }
+        });
         $.ajax({
             type: "GET",
             url: url2,
