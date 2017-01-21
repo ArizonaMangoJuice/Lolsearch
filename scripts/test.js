@@ -10,14 +10,15 @@ $(document).ready(function() {
             dataType: "json",
             success: function(json) {
                 $(".info").html("");
+                test = test.replace(/[\s]/gi, "");
                 var test2 = test;
-                console.log(test2);
+                console.log(test);
                 info = json[test].id;
                 $(".info").html(info);
                 console.log(info);
             },
             error: function() {
-                alert("you fucked something up");
+                alert("please enter a real name");
             }
         });
         var url2 = "https://na.api.pvp.net/api/lol/na/v1.3/game/by-summoner/" + info + "/recent?api_key=RGAPI-c99b18d9-2a9d-43a4-8b94-29942275b32d";
