@@ -54,7 +54,7 @@ $(document).ready(function() {
                     var kda = ((x[i].stats.championsKilled + x[i].stats.assists) / x[i].stats.numDeaths).toFixed(2);
                     //this is the champion id
                     id = x[i].championId;
-                    var url3 = "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + id + "?locale=en_US&champData=stats&api_key=RGAPI-c99b18d9-2a9d-43a4-8b94-29942275b32d"
+                    var url3 = "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + id + "?locale=en_US&champData=image&champData=stats&api_key=RGAPI-c99b18d9-2a9d-43a4-8b94-29942275b32d"
 
                     $.ajax({
                         type: "GET",
@@ -65,6 +65,7 @@ $(document).ready(function() {
                             var champion = json.id;
                             if (champion == id) {
                                 championName = json.key;
+                                imageName = json.image.full;
                             }
                         },
                         error: function() {
@@ -111,7 +112,7 @@ $(document).ready(function() {
                     //$(".info2").prepend("<li><a href= " + x[i].playerStatSummaryType + ">" + x[i].wins + "</a><p>" + x[i].playerStatSummaryType + "</p><li>")
                     $(".container-test").prepend("<div class='container-to-hold'><p class='border name-of-game'>" + x[i].subType + "</p><p class='stats'>" +
                         "" + kills + "/" + deaths + "/" + assists + "</p>" + "<p class='kda'>" + kda + " KDA" + "</p>" + "<p class='largest-kill'>" + "Killing Spree " + largestKill + "</p>" +
-                        "<p class='time'>" + time + " minutes" + "</p>" + "<p class='creep-score'>" + cs + " CS" + "</p>" + "<p class='outcome'>" + win + "</p>" + "<p class='champion-name'>" + championName + "</p>" + "</div>");
+                        "<p class='time'>" + time + " minutes" + "</p>" + "<p class='creep-score'>" + cs + " CS" + "</p>" + "<p class='outcome'>" + win + "</p>" + "<img src='http://ddragon.leagueoflegends.com/cdn/7.1.1/img/champion/" + imageName + "'alt=championName><p class='champion-name'>" + championName + "</p>" + "</div>");
                     //$(".container-test").prepend("<p class='border'>" + x[i].playerStatSummaryType + "</p>");
                 }
 
