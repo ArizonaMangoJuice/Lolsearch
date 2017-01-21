@@ -37,8 +37,22 @@ $(document).ready(function() {
                 rankedStreak = json[info][0].entries[0].isHotStreak;
                 rankedVeteran = json[info][0].entries[0].isVeteran;
                 rankedFreshBlood = json[info][0].entries[0].isFreshBlood;
+                rankedDivisionNumber = 0;
+                rankedDivisionTier = rankedTier.toLowerCase();
+                if (rankedDivision == "I") {
+                    rankedDivisionNumber = 1;
+                } else if (rankedDivision == "II") {
+                    rankedDivisionNumber = 2;
+                } else if (rankedDivision == "III") {
+                    rankedDivisionNumber = 3;
+                } else if (rankedDivision == "IV") {
+                    rankedDivisionNumber = 4;
+                } else if (rankedDivision == "V") {
+                    rankedDivisionNumber = 5;
+                }
+                rankedImage = "http://sk2.op.gg/images/medals/" + rankedDivisionTier + "_" + rankedDivisionNumber + ".png ";
 
-                $(".ranking-pic").prepend("<div class='ranked-stats'><p>" + rankedName + "</p><p>" + rankedQueue + "</p><p>" + rankedTier + " " + rankedDivision + "</p><p>" + rankedPoints + " LP" + "<p>" + rankedWins + " Wins " + rankedLosses + " Losses" + "</div>");
+                $(".ranking-pic").prepend("<div class='ranked-stats'><p>" + rankedName + "</p><p>" + rankedQueue + "</p><p>" + rankedTier + " " + rankedDivision + "</p><p>" + rankedPoints + " LP" + "<p>" + rankedWins + " Wins & " + rankedLosses + " Losses" + "<img class='ranked-image' src=" + rankedImage + "></div>");
 
                 console.log(typeof summonerID);
             },
@@ -136,7 +150,7 @@ $(document).ready(function() {
                     //$(".info2").prepend("<li><a href= " + x[i].playerStatSummaryType + ">" + x[i].wins + "</a><p>" + x[i].playerStatSummaryType + "</p><li>")
                     $(".container-test").prepend("<div class='container-to-hold'><p class='border name-of-game'>" + x[i].subType + "</p><p class='stats'>" +
                         "" + kills + "/" + deaths + "/" + assists + "</p>" + "<p class='kda'>" + kda + " KDA" + "</p>" + "<p class='largest-kill'>" + "Killing Spree " + largestKill + "</p>" +
-                        "<p class='time'>" + time + " minutes" + "</p>" + "<p class='creep-score'>" + cs + " CS" + "</p>" + "<p class='outcome'>" + win + "</p>" + "<img src='http://ddragon.leagueoflegends.com/cdn/7.1.1/img/champion/" + imageName + "'alt=championName><p class='champion-name'>" + championName + "</p>" + "</div>");
+                        "<p class='time'>" + time + " minutes" + "</p>" + "<p class='creep-score'>" + cs + " CS" + "</p>" + "<p class='outcome'>" + win + "</p>" + "<img class='champion-pics' src='http://ddragon.leagueoflegends.com/cdn/7.1.1/img/champion/" + imageName + "'alt=championName><p class='champion-name'>" + championName + "</p>" + "</div>");
                     //$(".container-test").prepend("<p class='border'>" + x[i].playerStatSummaryType + "</p>");
                 }
 

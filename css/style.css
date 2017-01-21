@@ -7,12 +7,12 @@
 div {}
 
 body {
-    background: #1a2725;
+    background: #f2f2f2;
 }
 
 #title {
     text-align: center;
-    color: #ca9a43;
+    color: #1a2725;
 }
 
 .img-container {
@@ -29,7 +29,7 @@ body {
 }
 
 .container input {
-    border: 1px solid #ca9a43;
+    border: 1px solid #1a2725;
     font-size: 24px;
     outline: none;
     padding: 6px;
@@ -42,7 +42,7 @@ body {
     font-size: 24px;
     padding: 6px;
     outline: none;
-    color: #ca9a43;
+    color: #fff;
     background: #1a2725;
     cursor: pointer;
 }
@@ -50,18 +50,18 @@ body {
 .container button:hover {
     transition: .5s;
     color: #1a2725;
-    background: #ca9a43;
+    background: #f2f2f2;
     border-radius: 3px;
 }
 
 .info {
     text-align: center;
-    color: #ca9a43;
+    color: #1a2725;
 }
 
 .info2 {
     text-align: center;
-    color: #ca9a43;
+    color: #1a2725;
     border: 1px solid #fff;
 }
 
@@ -70,19 +70,19 @@ body {
 }
 
 .container-test {
-    color: #ca9a43;
+    color: #1a2725;
 }
 
 .container-to-hold {
-    height: 200px;
+    height: 150px;
     position: relative;
-    border: 1px solid #ca9a43;
-    display: inline-block;
+    border: 1px solid #1a2725;
     background: #fff;
     padding: 0;
-    width: 70%;
-    float: right;
+    width: 700px;
+    margin-left: 30%;
     margin-bottom: 25px;
+    border-radius: 5px;
 }
 
 .container-to-hold:last-child {
@@ -150,7 +150,7 @@ body {
     text-decoration: underline;
 }
 
-img {
+.champion-pics {
     border-radius: 50%;
     position: absolute;
     right: 30px;
@@ -160,14 +160,37 @@ img {
 }
 
 .ranked-stats {
-    border: 1px solid #ca9a43;
-    color: #ca9a43;
+    border: 1px solid #1a2725;
+    color: #1a2725;
     text-decoration: underline;
     float: left;
     text-align: center;
     width: 300px;
     background: #fff;
     border-radius: 5px;
+    position: relative;
+    height: 150px;
+}
+
+.ranked-stats p {
+    float: left;
+    clear: both;
+    margin: 0;
+    padding-left: 10px;
+    width: 197.5px;
+    text-align: center;
+}
+
+.ranked-stats p:first-child {
+    padding-top: 12.5px;
+}
+
+.ranked-image {
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    top: 27px;
+    right: 10px;
 }
 
 #white {
