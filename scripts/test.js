@@ -20,6 +20,20 @@ $(document).ready(function() {
         var tierName = "https://na.api.pvp.net/api/lol/na/v2.5/league/by-summoner/" + info + "/entry?api_key=" + API;
 
         var url2 = "https://na.api.pvp.net/api/lol/na/v1.3/game/by-summoner/" + info + "/recent?api_key=" + API;
+        var url4 = "https://na.api.pvp.net/api/lol/na/v1.4/summoner/" + info + "?api_key=" + API;
+        $.ajax({
+            type: "GET",
+            url: url4,
+            dataType: "json",
+            success: function(json) {
+                profileIconId = json[info].profileIconId;
+                profileIconImage = "http://ddragon.leagueoflegends.com/cdn/7.2.1/img/profileicon/" + profileIconId + ".png";
+                $(".info").prepend("<div class='summoner-profile-stuff'><img class='profile-Icon-Image' src=" + profileIconImage + "></div>");
+            },
+            error: function() {
+                alert("error with profile icon");
+            }
+        });
         $.ajax({
             type: "GET",
             url: tierName,
@@ -52,7 +66,7 @@ $(document).ready(function() {
                 }
                 rankedImage = "http://sk2.op.gg/images/medals/" + rankedDivisionTier + "_" + rankedDivisionNumber + ".png ";
 
-                $(".ranking-pic").prepend("<div class='ranked-stats'><p>" + rankedName + "</p><p>" + rankedQueue + "</p><p>" + rankedTier + " " + rankedDivision + "</p><p>" + rankedPoints + " LP" + "<p>" + rankedWins + " Wins & " + rankedLosses + " Losses" + "<img class='ranked-image' src=" + rankedImage + "></div>");
+                $(".info").prepend("<div class='ranked-stats'><p>" + rankedName + "</p><p>" + rankedQueue + "</p><p>" + rankedTier + " " + rankedDivision + "</p><p>" + rankedPoints + " LP" + "<p>" + rankedWins + " Wins & " + rankedLosses + " Losses" + "<img class='ranked-image' src=" + rankedImage + "></div>");
 
                 console.log(typeof summonerID);
             },
