@@ -1,27 +1,24 @@
 $(document).ready(function() {
+    const API = "RGAPI-c99b18d9-2a9d-43a4-8b94-29942275b32d";
     $("#search-button").click(function() {
         test = $("#user-search").val();
-        var url = "https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/" + test + "?api_key=RGAPI-c99b18d9-2a9d-43a4-8b94-29942275b32d";
-        console.log(test);
+        var url = "https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/" + test + "?api_key=" + API;
         $.ajax({
             type: "GET",
             url: url,
             async: false,
             dataType: "json",
             success: function(json) {
-                $(".info").html("");
-                test = test.replace(/[\s]/gi, "");
-                var test2 = test;
                 console.log(test);
+                test = test.replace(/\s/g, '');
                 info = json[test].id;
                 $(".info").html(info);
-                console.log(info);
             },
             error: function() {
                 alert("please enter a real name");
             }
         });
-        var url2 = "https://na.api.pvp.net/api/lol/na/v1.3/game/by-summoner/" + info + "/recent?api_key=RGAPI-c99b18d9-2a9d-43a4-8b94-29942275b32d";
+        var url2 = "https://na.api.pvp.net/api/lol/na/v1.3/game/by-summoner/" + info + "/recent?api_key=" + API;
 
         $.ajax({
             type: "GET",
@@ -55,8 +52,8 @@ $(document).ready(function() {
                     var kda = ((x[i].stats.championsKilled + x[i].stats.assists) / x[i].stats.numDeaths).toFixed(2);
                     //this is the champion id
                     id = x[i].championId;
-                    var url3 = "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + id + "?locale=en_US&champData=image&champData=stats&api_key=RGAPI-c99b18d9-2a9d-43a4-8b94-29942275b32d"
-
+                    //this url is for the pictures and names of the champs
+                    var url3 = "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + id + "?locale=en_US&champData=image&champData=stats&api_key=" + API;
                     $.ajax({
                         type: "GET",
                         url: url3,
