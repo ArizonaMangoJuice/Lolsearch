@@ -1,0 +1,140 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Overpass Mono', monospace;
+    /* border: 1px solid red;*/
+}
+
+div {}
+
+body {
+    background: #1a2725;
+}
+
+#title {
+    text-align: center;
+    color: #ca9a43;
+}
+
+.img-container {
+    background: url("https://upload.wikimedia.org/wikipedia/en/7/77/League_of_Legends_logo.png ")no-repeat;
+    height: 200px;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+
+.container {
+    text-align: center;
+}
+
+.container input {
+    border: 1px solid #ca9a43;
+    font-size: 24px;
+    outline: none;
+    padding: 6px;
+    border-radius: 3px;
+    color: #1a2725;
+}
+
+.container button {
+    border: 1px;
+    font-size: 24px;
+    padding: 6px;
+    outline: none;
+    color: #ca9a43;
+    background: #1a2725;
+    cursor: pointer;
+}
+
+.container button:hover {
+    transition: .5s;
+    color: #1a2725;
+    background: #ca9a43;
+    border-radius: 3px;
+}
+
+.info {
+    text-align: center;
+    color: #ca9a43;
+}
+
+.info2 {
+    text-align: center;
+    color: #ca9a43;
+    border: 1px solid #fff;
+}
+
+.info3 {
+    position: relative;
+}
+
+.container-test {
+    color: #ca9a43;
+}
+
+.container-to-hold {
+    height: 200px;
+    position: relative;
+    border: 1px solid #ca9a43;
+    padding: 0;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
+}
+
+.name-of-game {
+    position: absolute;
+    left: 15px;
+    top: 0;
+    margin: 0;
+    font-size: 24px;
+    text-decoration: underline;
+}
+
+.stats {
+    border: 1px solid red;
+    position: absolute;
+    top: 30px;
+    width: 100%;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.time {
+    position: absolute;
+    top: 32px;
+    left: 15px;
+    text-decoration: underline;
+}
+
+.kda {
+    position: absolute;
+    top: 55px;
+    width: 100%;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.largest-kill {
+    position: absolute;
+    top: 80px;
+    text-align: center;
+    width: 100%;
+    text-decoration: underline;
+}
+
+.creep-score {
+    position: absolute;
+    top: 64px;
+    left: 15px;
+    text-decoration: underline;
+}
+
+.outcome {
+    position: absolute;
+    top: 96px;
+    left: 15px;
+    text-decoration: underline;
+}
