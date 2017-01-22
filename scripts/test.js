@@ -28,6 +28,7 @@ $(document).ready(function() {
             success: function(json) {
                 profileIconId = json[info].profileIconId;
                 profileIconImage = "http://ddragon.leagueoflegends.com/cdn/7.2.1/img/profileicon/" + profileIconId + ".png";
+
                 $(".info").prepend("<div class='summoner-profile-stuff'><img class='profile-Icon-Image' src=" + profileIconImage + "></div>");
             },
             error: function() {
@@ -52,6 +53,7 @@ $(document).ready(function() {
                 rankedVeteran = json[info][0].entries[0].isVeteran;
                 rankedFreshBlood = json[info][0].entries[0].isFreshBlood;
                 rankedDivisionNumber = 0;
+                rankedUnderScore = "_";
                 rankedDivisionTier = rankedTier.toLowerCase();
                 if (rankedDivision == "I") {
                     rankedDivisionNumber = 1;
@@ -64,14 +66,15 @@ $(document).ready(function() {
                 } else if (rankedDivision == "V") {
                     rankedDivisionNumber = 5;
                 }
-                rankedImage = "http://sk2.op.gg/images/medals/" + rankedDivisionTier + "_" + rankedDivisionNumber + ".png ";
 
-                $(".info").prepend("<div class='ranked-stats'><p>" + rankedName + "</p><p>" + rankedQueue + "</p><p>" + rankedTier + " " + rankedDivision + "</p><p>" + rankedPoints + " LP" + "<p>" + rankedWins + " Wins & " + rankedLosses + " Losses" + "<img class='ranked-image' src=" + rankedImage + "></div>");
+                rankedImage = "http://sk2.op.gg/images/medals/" + rankedDivisionTier + rankedUnderScore + rankedDivisionNumber + ".png ";
 
-                console.log(typeof summonerID);
+                $(".ranked-info").prepend("<div class='info'><div class='ranked-stats '><p>" + rankedName + "</p><p>" + rankedQueue + "</p><p>" + rankedTier + " " + rankedDivision + "</p><p>" + rankedPoints + " LP" + "<p>" + rankedWins + " <span class='cool'>Wins</span> & " + rankedLosses + "<span class='danger' > Losses</span>" + "<img class='ranked-image' src=" + rankedImage + "></div></div>");
+
+                console.log(rankedName);
             },
             error: function() {
-                alert("tier is wrong get er done");
+                alert("the player info currently only works with ranked players");
             }
         });
         $.ajax({
@@ -126,9 +129,9 @@ $(document).ready(function() {
                     });
 
                     if (win === true) {
-                        win = "Victory";
+                        win = "<span class='cool'>Victory</span>";
                     } else {
-                        win = "Defeat";
+                        win = "<span class='danger'>Defeat</span>";
                     }
                     if (monsters === NaN || monsters === undefined) {
                         cs = minions;
@@ -160,10 +163,9 @@ $(document).ready(function() {
                     }
 
                     //console.log(x[i]);
-
                     //$(".info2").prepend("<li><a href= " + x[i].playerStatSummaryType + ">" + x[i].wins + "</a><p>" + x[i].playerStatSummaryType + "</p><li>")
                     $(".container-test").prepend("<div class='container-to-hold'><p class='border name-of-game'>" + x[i].subType + "</p><p class='stats'>" +
-                        "" + kills + "/" + deaths + "/" + assists + "</p>" + "<p class='kda'>" + kda + " KDA" + "</p>" + "<p class='largest-kill'>" + "Killing Spree " + largestKill + "</p>" +
+                        "" + kills + "/<span class='danger'>" + deaths + "</span>/" + assists + "</p>" + "<p class='kda'>" + kda + " KDA" + "</p>" + "<p class='largest-kill'>" + "Killing Spree " + largestKill + "</p>" +
                         "<p class='time'>" + time + " minutes" + "</p>" + "<p class='creep-score'>" + cs + " CS" + "</p>" + "<p class='outcome'>" + win + "</p>" + "<img class='champion-pics' src='http://ddragon.leagueoflegends.com/cdn/7.1.1/img/champion/" + imageName + "'alt=championName><p class='champion-name'>" + championName + "</p>" + "</div>");
                     //$(".container-test").prepend("<p class='border'>" + x[i].playerStatSummaryType + "</p>");
                 }

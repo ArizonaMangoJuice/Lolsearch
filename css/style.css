@@ -66,11 +66,16 @@ body {
     padding: 10px;
 }
 
-.info {
+.ranked-info {
     text-align: center;
     color: #1a2725;
     margin-top: 30px;
     margin-bottom: 30px;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #fff;
+    border-radius: 10px;
 }
 
 .info2 {
@@ -97,6 +102,7 @@ body {
     margin-right: auto;
     margin-bottom: 25px;
     border-radius: 5px;
+    box-shadow: 5px 5px 15px #666;
 }
 
 .container-to-hold:last-child {
@@ -179,7 +185,7 @@ body {
     text-align: center;
     display: inline-block;
     width: 300px;
-    background: #f2f2f2;
+    background: #fff;
     border-radius: 5px;
     position: relative;
     height: 150px;
@@ -208,4 +214,12 @@ body {
 
 #white {
     color: #000;
+}
+
+.danger {
+    color: red;
+}
+
+.cool {
+    color: deepskyblue;
 }
