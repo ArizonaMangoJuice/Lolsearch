@@ -2,7 +2,14 @@
 
 $(document).ready(function() {
     const API = "RGAPI-1ad2ece7-777d-4e97-9c9d-942e53c7702e";
+    $('#user-search').keypress(function(e) {
+        var key = e.which;
+        if (key == 13) // the enter key code
+        {
+            $('#search-button').click();
 
+        }
+    });
     $("#search-button").click(function() {
         test = $("#user-search").val();
         $(".container-test").empty();
@@ -19,7 +26,12 @@ $(document).ready(function() {
                 tierName = "https://na.api.pvp.net/api/lol/na/v2.5/league/by-summoner/" + info + "/entry?api_key=" + API;
                 url2 = "https://na.api.pvp.net/api/lol/na/v1.3/game/by-summoner/" + info + "/recent?api_key=" + API;
                 url4 = "https://na.api.pvp.net/api/lol/na/v1.4/summoner/" + info + "?api_key=" + API;
+                unrankedMatchInfo = "https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/" + info + "/summary?season=SEASON2016&api_key=" + API;
                 profileIconImage = "";
+                unrankedInfo = "";
+                unrankedWins = "";
+                unrankedPic = "";
+                unrankedIcon = "";
                 /*--------Ajax call within ajax call dont know if thats allowed but its pretty sweet like a dream within a dream--------*/
                 $.ajax({
                     type: "GET",
@@ -37,7 +49,25 @@ $(document).ready(function() {
                     }
                 });
                 /*----------------*/
+                /*--------Ajax call within ajax call dont know if thats allowed but its pretty sweet like a dream within a dream--------*/
+                $.ajax({
+                    type: "GET",
+                    url: unrankedMatchInfo,
+                    dataType: "json",
+                    async: false,
+                    success: function(json) {
+                        unrankedInfo = json.playerStatSummaries[7].playerStatSummaryType;
+                        unrankedWins = json.playerStatSummaries[7].wins;
+                        unrankedPic = "http://ddragon.leagueoflegends.com/cdn/7.2.1/img/profileicon/" + profileIconId + ".png";
+                        unrankedIcon = "http://sk2.op.gg/images/medals/default.png";
+                        console.log(unrankedInfo);
 
+                    },
+                    error: function() {
+                        console.log("the unranked ajax is wrong");
+                    }
+                });
+                /*----------------*/
                 /*--------Ajax call within ajax call dont know if thats allowed but its pretty sweet like a dream within a dream--------*/
                 $.ajax({
                     type: "GET",
@@ -70,7 +100,9 @@ $(document).ready(function() {
                         } else if (rankedDivision == "V") {
                             rankedDivisionNumber = 5;
                         }
-
+                        if (rankedName === null || rankedName === undefined) {
+                            rankedName = "Unranked";
+                        }
                         rankedImage = "http://sk2.op.gg/images/medals/" + rankedDivisionTier + rankedUnderScore + rankedDivisionNumber + ".png ";
 
                         $(".ranked-info").prepend("<div class='.ranked-info'><div class='ranked-stats '><img class='profile-icon-image' src=" + profileIconImage + "><p>" + rankedName + "</p><p>" + rankedQueue + "</p><p>" + rankedTier + " " + rankedDivision + "</p><p>" + rankedPoints + " LP" + "<p>" + rankedWins + " <span class='cool'>Wins</span> & " + rankedLosses + "<span class='danger' > Losses</span></p>" + "<img class='ranked-image' src=" + rankedImage + "></div></div>");
@@ -78,7 +110,8 @@ $(document).ready(function() {
                         console.log(rankedName);
                     },
                     error: function() {
-                        alert("the player info currently only works with ranked players");
+
+                        $(".ranked-info").prepend("<div class='.ranked-info'><div class='ranked-stats '><img class='profile-icon-image' src=" + unrankedPic + ">" + "<p>" + unrankedInfo + "</p><p>" + "0" + " LP" + "<p>" + unrankedWins + " <span class='cool'>Wins</span> " + "<img class='ranked-image' src=" + unrankedIcon + "></div></div>");
                     }
                 });
                 /*----------------*/
