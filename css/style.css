@@ -13,6 +13,11 @@ body {
     color: #1a2725;
 }
 
+.info {
+    border: 1px solid #000;
+    text-align: center;
+}
+
 .img-container {
     background: url("https://upload.wikimedia.org/wikipedia/en/7/77/League_of_Legends_logo.png ")no-repeat;
     height: 200px;
@@ -52,30 +57,28 @@ body {
     border-radius: 3px;
 }
 
-.summoner-profile-stuff {
-    width: 150px;
-    height: 150px;
-    display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
-}
-
-.summoner-profile-stuff img {
-    border-radius: 50%;
-    padding: 10px;
-}
-
 .ranked-info {
     text-align: center;
     color: #1a2725;
     margin-top: 30px;
     margin-bottom: 30px;
-    width: 800px;
+    width: 300px;
     margin-left: auto;
     margin-right: auto;
     background: #fff;
     border-radius: 10px;
+    position: relative;
+}
+
+.summoner-profile-stuff {
+    display: block;
+}
+
+.profile-icon-image {
+    margin-top: 5px;
+    border-radius: 5px;
+    height: 100px;
+    width: 100px;
 }
 
 .info2 {
@@ -181,21 +184,24 @@ body {
 
 .ranked-stats {
     color: #1a2725;
-    text-decoration: underline;
     text-align: center;
-    display: inline-block;
     width: 300px;
     background: #fff;
     border-radius: 5px;
     position: relative;
-    height: 150px;
+    height: auto;
+}
+
+.ranked-stats:first-child {
+    margin: 0;
 }
 
 .ranked-stats p {
-    float: left;
-    clear: both;
     margin: 0;
-    padding-left: 10px;
+    padding: 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     width: 197.5px;
     text-align: center;
 }
@@ -204,12 +210,16 @@ body {
     padding-top: 12.5px;
 }
 
+.ranked-stats p:last-child {
+    width: 230px;
+}
+
 .ranked-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     height: 100px;
     width: 100px;
-    position: absolute;
-    top: 27px;
-    right: 10px;
 }
 
 #white {

@@ -14,11 +14,11 @@ $(document).ready(function() {
             success: function(json) {
                 console.log(test);
                 info = json[test].id;
-                $(".info").html(info);
+                $(".ranked-info").html(info);
                 tierName = "https://na.api.pvp.net/api/lol/na/v2.5/league/by-summoner/" + info + "/entry?api_key=" + API;
                 url2 = "https://na.api.pvp.net/api/lol/na/v1.3/game/by-summoner/" + info + "/recent?api_key=" + API;
                 url4 = "https://na.api.pvp.net/api/lol/na/v1.4/summoner/" + info + "?api_key=" + API;
-
+                profileIconImage = "";
                 /*--------Ajax call within ajax call dont know if thats allowed but its pretty sweet like a dream within a dream--------*/
                 $.ajax({
                     type: "GET",
@@ -28,8 +28,8 @@ $(document).ready(function() {
                     success: function(json) {
                         profileIconId = json[info].profileIconId;
                         profileIconImage = "http://ddragon.leagueoflegends.com/cdn/7.2.1/img/profileicon/" + profileIconId + ".png";
-
-                        $(".info").prepend("<div class='summoner-profile-stuff'><img class='profile-Icon-Image' src=" + profileIconImage + "></div>");
+                        console.log(profileIconImage);
+                        //$(".ranked-info").prepend("<div class='summoner-profile-stuff'><img class='profile-icon-image' src=" + profileIconImage + "></div>");
                     },
                     error: function() {
                         alert("error with profile icon");
@@ -72,7 +72,7 @@ $(document).ready(function() {
 
                         rankedImage = "http://sk2.op.gg/images/medals/" + rankedDivisionTier + rankedUnderScore + rankedDivisionNumber + ".png ";
 
-                        $(".ranked-info").prepend("<div class='info'><div class='ranked-stats '><p>" + rankedName + "</p><p>" + rankedQueue + "</p><p>" + rankedTier + " " + rankedDivision + "</p><p>" + rankedPoints + " LP" + "<p>" + rankedWins + " <span class='cool'>Wins</span> & " + rankedLosses + "<span class='danger' > Losses</span>" + "<img class='ranked-image' src=" + rankedImage + "></div></div>");
+                        $(".ranked-info").prepend("<div class='.ranked-info'><div class='ranked-stats '><img class='profile-icon-image' src=" + profileIconImage + "><p>" + rankedName + "</p><p>" + rankedQueue + "</p><p>" + rankedTier + " " + rankedDivision + "</p><p>" + rankedPoints + " LP" + "<p>" + rankedWins + " <span class='cool'>Wins</span> & " + rankedLosses + "<span class='danger' > Losses</span></p>" + "<img class='ranked-image' src=" + rankedImage + "></div></div>");
 
                         console.log(rankedName);
                     },
