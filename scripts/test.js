@@ -5,6 +5,7 @@ $(document).ready(function() {
 
     $("#search-button").click(function() {
         test = $("#user-search").val();
+        $(".container-test").empty();
         var url = "https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/" + test + "?api_key=" + API;
         $.ajax({
             type: "GET",
@@ -24,7 +25,7 @@ $(document).ready(function() {
                     type: "GET",
                     url: url4,
                     dataType: "json",
-                    async: true,
+                    async: false,
                     success: function(json) {
                         profileIconId = json[info].profileIconId;
                         profileIconImage = "http://ddragon.leagueoflegends.com/cdn/7.2.1/img/profileicon/" + profileIconId + ".png";
