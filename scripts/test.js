@@ -2,7 +2,7 @@
 
 $(document).ready(function() {
     const API = "RGAPI-1ad2ece7-777d-4e97-9c9d-942e53c7702e";
-    $('#user-search').keypress(function(e) {
+    $('body').keypress(function(e) {
         var key = e.which;
         if (key == 13) // the enter key code
         {
@@ -10,6 +10,7 @@ $(document).ready(function() {
 
         }
     });
+
     $("#search-button").click(function() {
         test = $("#user-search").val();
         $(".container-test").empty();
